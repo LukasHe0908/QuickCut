@@ -4,7 +4,7 @@
 
 ## 界面预览
 
-<img src="assets/image.png" alt="Preview" style="zoom:50%;" />
+<img src="assets/image.png" />
 
 ## Special Thanks
 
