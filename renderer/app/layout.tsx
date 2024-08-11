@@ -16,6 +16,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <body>
           <NextUIProvider className='h-full w-full dark:dark'>
             <ScrollBar className='h-full w-full'>{children}</ScrollBar>
+            {/* {children} */}
           </NextUIProvider>
         </body>
       </html>

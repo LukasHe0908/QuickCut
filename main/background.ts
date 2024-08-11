@@ -19,7 +19,7 @@ Menu.setApplicationMenu(null);
 (async () => {
   await app.whenReady();
 
-  nativeTheme.themeSource = 'light';
+  // nativeTheme.themeSource = 'light';
   const mainWindow = new BrowserWindow({
     show: false,
     width: 800,
