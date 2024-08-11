@@ -4,7 +4,7 @@
 
 ## 界面预览
 
-<img src="assets/image.png" />
+<img src="assets/image main.png" />
 
 ## Special Thanks
 
