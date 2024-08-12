@@ -51,6 +51,7 @@ export function FilePathSelector({
     <>
       <Input
         size='sm'
+        isClearable={true}
         placeholder={inputPlaceholder}
         onDragOver={ev => ev.preventDefault()}
         onDrop={ev => {
@@ -73,12 +74,11 @@ export function FilePathSelector({
       />
       <Button
         size='sm'
-        draggable={true}
         onClick={async () => {
           if (window.ipc) {
             let adds = [];
-            directory && adds.join('openDirectory');
-            multiple && adds.join('multiSelections');
+            directory && adds.push('openDirectory');
+            multiple && adds.push('multiSelections');
             let filePath = await showOpenDialogSync({ properties: ['openFile', ...adds] });
             if (filePath) setPath(filePath[0]);
           } else {

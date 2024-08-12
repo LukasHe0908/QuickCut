@@ -4,7 +4,8 @@
 
 ## 界面预览
 
-<img src="assets/image main.png" />
+<img src="assets/image dark.png" />
+<img src="assets/image light.png" />
 
 ## Special Thanks
 

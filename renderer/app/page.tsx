@@ -19,7 +19,6 @@ export default function App() {
           <Tab key='settings' title='设置' className='h-full'>
             <Card>
               <CardBody>Settings...</CardBody>
-              <input type="text" />
             </Card>
           </Tab>
           <Tab key='about' title='关于' className='h-full'>

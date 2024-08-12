@@ -1,3 +1,4 @@
+'use client';
 import { Card, CardBody, Button, Textarea } from '@nextui-org/react';
 import LeftPanel from './leftPanel';
 import RightPanel from './rightPanel';
