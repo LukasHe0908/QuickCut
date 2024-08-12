@@ -1,13 +1,14 @@
 import { useMemo, useState } from 'react';
 import { Listbox, ListboxItem, ListboxSection } from '@nextui-org/react';
 import ScrollBar from './scroll';
+
 export default function SelectList({ classname }: { classname? }) {
   const [selectedKeys, setSelectedKeys] = useState(new Set(['']));
 
   const selectedValue = useMemo(() => Array.from(selectedKeys).join(', '), [selectedKeys]);
 
   return (
-    <ScrollBar className={'w-full border-small px-1 py-2 rounded-small border-default-200 dark:border-default-100 h-[20em] ' + classname}>
+    <ScrollBar className={'w-full border-small px-1 py-2 rounded-small border-default-200 h-[20em] ' + classname}>
       <Listbox
         variant='flat'
         selectionMode='single'

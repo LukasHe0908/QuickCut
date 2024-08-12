@@ -1,5 +1,5 @@
 import path from 'path';
-import { app, ipcMain, nativeTheme } from 'electron';
+import { app, ipcMain, nativeTheme, dialog } from 'electron';
 import serve from 'electron-serve';
 import { createWindow } from './helpers';
 import { BrowserWindow, Menu } from 'electron';
@@ -52,12 +52,17 @@ Menu.setApplicationMenu(null);
       contextMenu.popup();
     });
   }
+
+  ipcMain.on('showOpenDialog', async (event, signal, options) => {
+    try {
+      let result = await dialog.showOpenDialogSync(mainWindow, options);
+      event.reply('showOpenDialog/' + signal, result);
+    } catch (error) {
+      event.reply('showOpenDialog/' + signal, undefined, error);
+    }
+  });
 })();
 
 app.on('window-all-closed', () => {
   app.quit();
-});
-
-ipcMain.on('message', async (event, arg) => {
-  event.reply('message', `${arg} World!`);
 });

@@ -1,5 +1,7 @@
-import { useEffect, useState } from 'react';
+import { createContext, useContext } from 'react';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
+
+export const themeContext = createContext(false);
 
 export default function ScrollBar({
   children,
@@ -16,13 +18,7 @@ export default function ScrollBar({
   autoHideDelay?: number;
   autoHideSuspend?: boolean;
 }) {
-  const [darkMode, setDarkMode] = useState(false);
-  useEffect(() => {
-    setDarkMode(window.matchMedia('(prefers-color-scheme: dark)').matches);
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
-      setDarkMode(event.matches);
-    });
-  }, []);
+  const darkMode = useContext(themeContext);
   return (
     <OverlayScrollbarsComponent
       className={'overflow-auto ' + className}
