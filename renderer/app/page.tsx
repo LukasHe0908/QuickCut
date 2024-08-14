@@ -1,9 +1,25 @@
 'use client';
 import { useState } from 'react';
-import { Tabs, Tab, Card, CardBody, Button, Textarea, Input, Checkbox, Tooltip, Chip } from '@nextui-org/react';
+import {
+  Tabs,
+  Tab,
+  Card,
+  CardBody,
+  Button,
+  Textarea,
+  Input,
+  Checkbox,
+  Tooltip,
+  Chip,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  ScrollShadow,
+} from '@nextui-org/react';
 import ScrollBar from './components/scroll';
 import FFmpegPage from './ffmpeg/page';
 import BorderWrapper from './components/borderWrapper';
+import ScrollText from './test/scrollText';
 
 export default function App() {
   return (
@@ -26,11 +42,14 @@ export default function App() {
               <CardBody>
                 <HelpList></HelpList>
                 <h2 className='text-lg font-bold'>开发中</h2>
-                About...<br></br>About...<br></br>About...<br></br>About...<br></br>About...<br></br>About...<br></br>About...<br></br>
-                About...<br></br>About...<br></br>About...<br></br>About...<br></br>About...<br></br>About...<br></br>About...<br></br>
-                About...<br></br>About...<br></br>About...<br></br>About...<br></br>About...<br></br>About...<br></br>About...<br></br>
-                About...<br></br>About...<br></br>About...<br></br>About...<br></br>About...<br></br>About...<br></br>About...<br></br>
-                About...<br></br>About...<br></br>About...<br></br>About...<br></br>
+                <ScrollText></ScrollText>
+                <ScrollBar className='h-[400px] [mask-image:linear-gradient(180deg,transparent,#000_2em,#000_calc(100%-4em),transparent)]'>
+                  About...<br></br>About...<br></br>About...<br></br>About...<br></br>About...<br></br>About...<br></br>About...<br></br>
+                  About...<br></br>About...<br></br>About...<br></br>About...<br></br>About...<br></br>About...<br></br>About...<br></br>
+                  About...<br></br>About...<br></br>About...<br></br>About...<br></br>About...<br></br>About...<br></br>About...<br></br>
+                  About...<br></br>About...<br></br>About...<br></br>About...<br></br>About...<br></br>About...<br></br>About...<br></br>
+                  About...<br></br>About...<br></br>About...<br></br>About...<br></br>
+                </ScrollBar>
               </CardBody>
             </Card>
           </Tab>
@@ -52,9 +71,21 @@ function HelpList() {
   );
 }
 
-function HelpTooltip({ children, content }) {
-  return (
-    <Tooltip content={content} placement='bottom' offset={4} className='rounded-small'>
+function HelpTooltip({ children, content, needClick = true, showArrow = false }) {
+  return needClick ? (
+    <Popover placement='bottom' showArrow={showArrow} backdrop={'blur'}>
+      <PopoverTrigger>
+        <Button>{children}</Button>
+      </PopoverTrigger>
+      <PopoverContent>
+        <div className='p-1 rounded-sm'>
+          <div className='text-base font-bold'>{children}</div>
+          <div className='text-sm'>{content}</div>
+        </div>
+      </PopoverContent>
+    </Popover>
+  ) : (
+    <Tooltip content={content} placement='bottom' offset={4} className='rounded-small' showArrow={showArrow}>
       <Chip size='lg' radius='sm'>
         {children}
       </Chip>
